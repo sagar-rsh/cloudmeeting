@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://vas123:vas123@cloudmeeting.tm21x.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "SAdDsEdD"
+}
