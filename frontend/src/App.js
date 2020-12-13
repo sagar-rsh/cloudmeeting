@@ -1,41 +1,51 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import Logout from './components/auth/Logout'
-import Alert from './components/layout/Alert';
-//Redux
-import { Provider } from 'react-redux';
-import store from './store';
-import {loadUser} from './actions/auth';
-import setAuthToken from './utils/setAuthToken';
-
-
+import React from 'react';
 import './App.css';
+import Sidebar from './components/dashboard/Sidebar';
+import Chat from './components/dashboard/Chat';
+import { selectUser } from './features/userSlice';
+import { useDispatch, useSelector } from 'react-redux'
+import Login from './Login';
+import { useEffect } from 'react';
+import { auth } from './components/dashboard/firebase';
+import { login, logout } from './features/userSlice'
 
-if(localStorage.token) {
-  setAuthToken(localStorage.token);
-}
+function App() {
+  const dispatch = useDispatch()
+  const user = useSelector(selectUser)
 
-
-const App = () => {
   useEffect(() => {
-    store.dispatch(loadUser());
-  }, [])
+    auth.onAuthStateChanged((authUser) => {
+
+      console.log(authUser)
+
+      if (authUser) {
+        dispatch(login({
+          uid: authUser.uid,
+          photo: authUser.photoURL,
+          email: authUser.email,
+          displayName: authUser.displayName
+        }))
+      } else {
+        dispatch(logout())
+      }
+    })
+  }, [dispatch])
+
+  console.log(user)
+
   return (
-  <Provider store={store}>
-    <Router>
-      <Alert />
-      <Switch>
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/logout" component={Logout} />
-        <Route exact path=  "/" component={Login} />
-      </Switch>
-    </Router>
-    </Provider>
-)};
+    <div className="app">
+      {user ? (
+        <>
+          <Sidebar />
+          <Chat />
+        </>
 
-
+      ) : (
+          <Login />
+        )}
+    </div>
+  );
+}
 
 export default App;

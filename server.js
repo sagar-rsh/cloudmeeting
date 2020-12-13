@@ -2,10 +2,21 @@ const express = require('express');
 const connectDB = require('./config/db');
 const mongoData = require('./mongoData');
 const cors = require('cors');
+const mongoose = require('mongoose')
+const Pusher = require('pusher')
 
 // App Config
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const pusher = new Pusher({
+    appId: "1122190",
+    key: "6ee0d2c0c8adc5cff9da",
+    secret: "1cef271a45f60cf77716",
+    cluster: "ap2",
+    useTLS: true
+  });
+
 
 // Init Middleware
 app.use(express.json());
@@ -13,6 +24,24 @@ app.use(cors());
 
 // Connect Database
 connectDB();
+mongoose.connection.once('open', () => {
+    console.log('DB Connected')
+    const changeStream = mongoose.connection.collection('conversations').watch()
+
+    changeStream.on('change', (change) => {
+        if (change.operationType === 'insert') {
+            pusher.trigger('channels', 'newChannel', {
+                'change': change
+            });
+        } else if (change.operationType === 'update') {
+            pusher.trigger('conversations', 'newMessage', {
+                'change': change
+            });
+        } else {
+            console.log('Error Triggering Pusher')
+        }
+    })
+})
 
 app.get('/', (req, res) => res.status(200).send('API Running'));
 
