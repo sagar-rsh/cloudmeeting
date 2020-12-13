@@ -10,6 +10,8 @@ import { Avatar } from '@material-ui/core'
 import MicIcon from '@material-ui/icons/Mic'
 import HeadsetIcon from '@material-ui/icons/Headset'
 import SettingsIcon from '@material-ui/icons/Settings'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../features/userSlice'
 import { auth } from './firebase'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -21,6 +23,8 @@ const pusher = new Pusher('6ee0d2c0c8adc5cff9da', {
     });
 
 const Sidebar = () => {
+
+    const user = useSelector(selectUser)
     const [channels, setChannels] = useState([])
 
     const getChannels = () => {
@@ -93,8 +97,8 @@ const Sidebar = () => {
             <div className="sidebar__profile">
             <Avatar src={''} onClick={() => auth.signOut()} />
                 <div className="sidebar__profileInfo">
-                    <h3>{'Master Chief'}</h3>
-                    <p>#{'117'}</p>
+                    <h3>{user.displayName}</h3>
+                    <p>#{user.uid.substring(0, 5)}</p>
                 </div>
 
                 <div className="sidebar__profileIcons">
