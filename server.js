@@ -9,6 +9,18 @@ const Pusher = require('pusher')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+
+io.on('connection', (socket)=> {
+      console.log('User Online');
+
+      socket.on('canvas-data', (data)=> {
+            socket.broadcast.emit('canvas-data', data);
+            
+      })
+})
+
 const pusher = new Pusher({
     appId: "1122190",
     key: "6ee0d2c0c8adc5cff9da",
@@ -126,4 +138,6 @@ app.get('/get/conversation', (req, res) => {
 
 
 
-app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));
+
+// app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));
+http.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));

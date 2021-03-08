@@ -8,6 +8,8 @@ import Login from './Login';
 import { useEffect } from 'react';
 import { auth } from './components/dashboard/firebase';
 import { login, logout } from './features/userSlice'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Container from './components/whiteboard/container/Container';
 
 function App() {
   const dispatch = useDispatch()
@@ -44,6 +46,13 @@ function App() {
       ) : (
           <Login />
         )}
+      <BrowserRouter>
+        <Switch>
+          <Route path="/whiteboard">
+            <Container />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

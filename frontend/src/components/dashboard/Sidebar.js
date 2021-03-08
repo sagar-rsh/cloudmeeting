@@ -6,7 +6,7 @@ import SidebarChannel from './SidebarChannel'
 import SignalCellularAltIcon from '@material-ui/icons/SignalCellularAlt'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
 import CallIcon from '@material-ui/icons/Call'
-import { Avatar } from '@material-ui/core'
+import { Avatar, Button } from '@material-ui/core'
 import MicIcon from '@material-ui/icons/Mic'
 import HeadsetIcon from '@material-ui/icons/Headset'
 import SettingsIcon from '@material-ui/icons/Settings'
@@ -17,6 +17,8 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from './../../axios'
 import Pusher from 'pusher-js'
+import Container from  '../whiteboard/container/Container';
+import { Link, Route, Switch } from "react-router-dom";
 
 const pusher = new Pusher('6ee0d2c0c8adc5cff9da', {
     cluster: 'ap2'
@@ -26,6 +28,7 @@ const Sidebar = () => {
 
     const user = useSelector(selectUser)
     const [channels, setChannels] = useState([])
+    const [component, showComponent] = useState(false)
 
     const getChannels = () => {
         axios.get('/get/channelList')
@@ -57,6 +60,10 @@ const Sidebar = () => {
         }
     }
 
+    const onButtonClick = () =>{
+        window.open('/whiteboard')
+      };
+
     return (
         <div className='sidebar' >
             <div className="sidebar__top">
@@ -80,6 +87,11 @@ const Sidebar = () => {
                         ))
                     }
                 </div>
+            </div>
+
+            <div className="whiteboard">
+                <Button onClick={onButtonClick}>Whiteboard</Button>
+               
             </div>
 
             <div className="sidebar__voice">
