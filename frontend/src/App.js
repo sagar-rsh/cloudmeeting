@@ -10,6 +10,7 @@ import { auth } from './components/dashboard/firebase';
 import { login, logout } from './features/userSlice'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Container from './components/whiteboard/container/Container';
+import {default as videoScreenshare} from './components/videoScreenshare/components/App/App';
 
 function App() {
   const dispatch = useDispatch()
@@ -37,22 +38,34 @@ function App() {
 
   return (
     <div className="app">
-      {user ? (
-        <>
-          <Sidebar />
-          <Chat />
-        </>
-
-      ) : (
-          <Login />
-        )}
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Switch>
-          <Route path="/whiteboard">
-            <Container />
-          </Route>
+          <Route path="" > */}
+            {user ? (
+              <>
+                <Sidebar />
+                <Chat />
+              </>
+
+            ) : ( 
+                <Login />
+              )}
+          {/* </Route> */}
+          
+          <BrowserRouter>
+          <Switch>
+          <Route path="/whiteboard" component={Container} />
+          <Route path="/videoScreenshare" component={videoScreenshare} />
         </Switch>
       </BrowserRouter>
+
+
+      {/* <BrowserRouter>
+        <Switch>
+          <Route path="/whiteboard" component={Container} />
+          <Route path="/videoScreenshare" component={videoScreenshare} />
+        </Switch>
+      </BrowserRouter> */}
     </div>
   );
 }

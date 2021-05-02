@@ -1,4 +1,4 @@
-.chatHeader {
+.chatHeader-reset {
   display: flex;
   color: gray;
   padding: 10px;
@@ -6,35 +6,35 @@
   align-items: center;
 }
 
-.chatHeader__hash {
+.chatHeader-reset__hash {
   color: gray;
   font-size: 30px;
   padding: 10px;
 }
 
-.chatHeader__left > h3 {
+.chatHeader-reset__left > h3 {
   display: flex;
   align-items: center;
   color: white;
 }
 
-.chatHeader__right {
+.chatHeader-reset__right {
   display: flex;
   align-items: center;
   flex: 0.5;
   justify-content: space-between;
 }
 
-.chatHeader__right > .MuiSvgIcon-root {
+.chatHeader-reset__right > .MuiSvgIcon-root {
   padding: 5px;
   cursor: pointer;
 }
 
-.chatHeader__right > .MuiSvgIcon-root:hover {
+.chatHeader-reset__right > .MuiSvgIcon-root:hover {
   color: rgb(0, 0, 0);
 }
 
-.chatHeader__search {
+.chatHeader-reset__search {
   display: flex;
   align-items: center;
   color: gray;
@@ -43,7 +43,7 @@
   padding: 3px;
 }
 
-.chatHeader__search > input {
+.chatHeader-reset__search > input {
   background: transparent;
   outline-width: 0;
   color: white;

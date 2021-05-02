@@ -5,11 +5,11 @@ import './Message.css'
 const Message = ({ timestamp, user, message }) => {
 
     return (
-        <div className='message' >
+        <div className='message-reset' >
             <Avatar src={user.photo} />
-            <div className="message__info">
+            <div className="message-reset__info">
                 <h4>{user.displayName}
-                    <span className="message__timestamp">{new Date(parseInt(timestamp)).toDateString()}</span>
+                    <span className="message-reset__timestamp">{new Date(parseInt(timestamp)).toDateString()}</span>
                 </h4>
 
                 <p>{message}</p> 

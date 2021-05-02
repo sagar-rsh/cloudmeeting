@@ -4,6 +4,13 @@ const mongoData = require('./mongoData');
 const cors = require('cors');
 const mongoose = require('mongoose')
 const Pusher = require('pusher')
+const twilio = require("twilio");
+
+require("dotenv").config();
+
+const AccessToken = twilio.jwt.AccessToken;
+const VideoGrant = AccessToken.VideoGrant;
+
 
 // App Config
 const app = express();
@@ -135,6 +142,21 @@ app.get('/get/conversation', (req, res) => {
         }
     })
 })
+
+app.get("/token", (req, res) => {
+    const token = new AccessToken(
+      process.env.TWILIO_ACCOUNT_SID,
+      process.env.TWILIO_API_KEY,
+      process.env.TWILIO_API_SECRET
+    );
+  
+    token.addGrant(new VideoGrant());
+  
+    token.identity = req.query.user;
+  
+    res.send({ token: token.toJwt() });
+  });
+  
 
 
 

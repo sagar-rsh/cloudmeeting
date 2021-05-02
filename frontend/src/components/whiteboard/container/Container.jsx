@@ -29,7 +29,7 @@ class Container extends React.Component
     render() {
 
         return (
-            <div className="container">
+            <div className="container-reset">
                 <div class="tools-section">
                     <div className="color-picker-container">
                         Select Brush Color : &nbsp; 

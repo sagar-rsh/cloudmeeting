@@ -60,27 +60,31 @@ const Sidebar = () => {
         }
     }
 
-    const onButtonClick = () =>{
-        window.open('/whiteboard')
+    const onWhiteboardClick = () =>{
+        window.open('/whiteboard', )
+      };
+
+      const onVideoScreenshareClick = () =>{
+        window.open('/videoScreenshare', )
       };
 
     return (
-        <div className='sidebar' >
-            <div className="sidebar__top">
+        <div className='sidebar-reset' >
+            <div className="sidebar-reset__top">
                 <h3>Server 2</h3>
                 <ExpandMoreIcon />
             </div>
 
-            <div className="sidebar__channels">
-                <div className="sidebar__channelsHeader">
-                    <div className="sidebar__header">
+            <div className="sidebar-reset__channels">
+                <div className="sidebar-reset__channelsHeader">
+                    <div className="sidebar-reset__header">
                         <ExpandMoreIcon />
                         <h4>Text Channels</h4>
                     </div>
 
-                    <AddIcon onClick={handleAddChannel} className='sidebar__addChannel' />
+                    <AddIcon onClick={handleAddChannel} className='sidebar-reset__addChannel' />
                 </div>
-                <div className="sidebar__channelsList">
+                <div className="sidebar-reset__channelsList">
                     {
                         channels.map(channel => (
                             <SidebarChannel key={channel.id} id={channel.id} channelName={channel.name} />
@@ -89,31 +93,31 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="whiteboard">
-                <Button onClick={onButtonClick}>Whiteboard</Button>
-               
+            <div className="sidebar-feature">
+                <Button onClick={onWhiteboardClick}>Whiteboard</Button>
+                <Button onClick={onVideoScreenshareClick}>Video + Screenshare</Button>
             </div>
 
-            <div className="sidebar__voice">
-                <SignalCellularAltIcon className='sidebar__voiceIcons' fontSize='large' />
-                <div className="sidebar__voiceInfo">
+            <div className="sidebar-reset__voice">
+                <SignalCellularAltIcon className='sidebar-reset__voiceIcons' fontSize='large' />
+                <div className="sidebar-reset__voiceInfo">
                     <h3>Voice Connected</h3>
                     <p>Stream</p>
                 </div>
 
-                <div className="sidebar__voiceIcons">
+                <div className="sidebar-reset__voiceIcons">
                     <InfoOutlinedIcon />
                     <CallIcon />
                 </div>
             </div>
-            <div className="sidebar__profile">
+            <div className="sidebar-reset__profile">
             <Avatar src={''} onClick={() => auth.signOut()} />
-                <div className="sidebar__profileInfo">
+                <div className="sidebar-reset__profileInfo">
                     <h3>{user.displayName}</h3>
                     <p>#{user.uid.substring(0, 5)}</p>
                 </div>
 
-                <div className="sidebar__profileIcons">
+                <div className="sidebar-reset__profileIcons">
                     <MicIcon />
                     <HeadsetIcon />
                     <SettingsIcon />

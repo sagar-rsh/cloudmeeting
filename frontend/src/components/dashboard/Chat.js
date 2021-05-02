@@ -57,17 +57,17 @@ const Chat = () => {
     }
 
     return (
-        <div className='chat' >
+        <div className='chat-reset' >
             <ChatHeader channelName={channelName} />
 
-            <div className="chat__messages">
+            <div className="chat__messages-reset">
 
                 {messages.map(message => (
                     <Message message={message.message} timestamp={message.timestamp} user={message.user} />
                 ))}
             </div>
 
-            <div className="chat__input">
+            <div className="chat__input-reset">
                 <AddCircleIcon fontSize='large' />
                 <form>
                     <input type="text" disabled={!channelId} value={input} onChange={(e) => setInput(e.target.value)} placeholder={`Message #${channelName}`} />

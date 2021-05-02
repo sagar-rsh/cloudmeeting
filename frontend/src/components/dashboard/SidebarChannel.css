@@ -1,9 +1,9 @@
-.sidebarChannel:hover > h4 {
+.sidebarChannel-reset:hover > h4 {
   color: rgb(0, 0, 0);
   background-color: #ffffff;
 }
 
-.sidebarChannel > h4 {
+.sidebarChannel-reset > h4 {
   display: flex;
   padding-left: 15px;
   align-items: center;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-.sidebarChannel__hash {
+.sidebarChannel-reset__hash {
   font-size: 30px;
   padding: 8px;
 }
