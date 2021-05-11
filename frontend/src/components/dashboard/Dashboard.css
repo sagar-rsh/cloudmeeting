@@ -13,7 +13,7 @@ body {
 
 .container {
   background: white;
-  padding: 350px;
+  padding: 0px;
   border-radius: 3px;
   background-color: rgba(255, 255, 255, .35);  
   backdrop-filter: blur(10px);
