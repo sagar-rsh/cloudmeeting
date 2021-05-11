@@ -31,7 +31,7 @@
 }
 
 .chatHeader-reset__right > .MuiSvgIcon-root:hover {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .chatHeader-reset__search {
@@ -46,6 +46,29 @@
 .chatHeader-reset__search > input {
   background: transparent;
   outline-width: 0;
-  color: white;
+  color: black;
   border: none;
+}
+
+.chatHeader-reset__board {
+  display: flex;
+  color: white;
+  border-radius: 3px;
+  padding: 3px;
+  justify-content: space-evenly;
+
+  
+}
+.chatHeader-reset__board > .MuiSvgIcon-root:hover {
+  color: rgb(255, 255, 255);
+  background-color: grey;
+}
+
+.chatHeader-reset_button{
+  color: white;
+}
+
+.Button{
+  color: white;
+  background-color: white;
 }

@@ -1,7 +1,6 @@
 .app {
   display: flex;
   background: white;
-  padding: 0px;
   border-radius: 3px;
   background-color: rgba(255, 255, 255, .35);  
   backdrop-filter: blur(10px);
@@ -10,5 +9,18 @@
   background-image: url(https://miro.medium.com/max/15904/1*Sv8bS5VBt3gJ9e9yJZl5RA.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 10px;
+  padding: 15px;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
 }

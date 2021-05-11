@@ -32,7 +32,7 @@ class Container extends React.Component
             <div className="container-reset">
                 <div class="tools-section">
                     <div className="color-picker-container">
-                        Select Brush Color : &nbsp; 
+                        Select Brush Color: &nbsp; 
                         <input type="color" value={this.state.color} onChange={this.changeColor.bind(this)}/>
                     </div>
 

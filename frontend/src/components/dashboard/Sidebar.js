@@ -4,12 +4,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import AddIcon from '@material-ui/icons/Add'
 import SidebarChannel from './SidebarChannel'
 import SignalCellularAltIcon from '@material-ui/icons/SignalCellularAlt'
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
-import CallIcon from '@material-ui/icons/Call'
-import { Avatar, Button } from '@material-ui/core'
-import MicIcon from '@material-ui/icons/Mic'
-import HeadsetIcon from '@material-ui/icons/Headset'
-import SettingsIcon from '@material-ui/icons/Settings'
+import { Avatar} from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../features/userSlice'
 import { auth } from './firebase'
@@ -17,8 +12,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from './../../axios'
 import Pusher from 'pusher-js'
-import Container from  '../whiteboard/container/Container';
-import { Link, Route, Switch } from "react-router-dom";
 
 const pusher = new Pusher('6ee0d2c0c8adc5cff9da', {
     cluster: 'ap2'
@@ -60,19 +53,10 @@ const Sidebar = () => {
         }
     }
 
-    const onWhiteboardClick = () =>{
-        window.open('/whiteboard', )
-      };
-
-      const onVideoScreenshareClick = () =>{
-        window.open('/videoScreenshare', )
-      };
-
     return (
         <div className='sidebar-reset' >
             <div className="sidebar-reset__top">
-                <h3>Server 2</h3>
-                <ExpandMoreIcon />
+                <h3>Welcome</h3>
             </div>
 
             <div className="sidebar-reset__channels">
@@ -93,34 +77,22 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="sidebar-feature">
+            {/* <div className="sidebar-feature">
                 <Button onClick={onWhiteboardClick}>Whiteboard</Button>
                 <Button onClick={onVideoScreenshareClick}>Video + Screenshare</Button>
-            </div>
+            </div> */}
 
             <div className="sidebar-reset__voice">
                 <SignalCellularAltIcon className='sidebar-reset__voiceIcons' fontSize='large' />
                 <div className="sidebar-reset__voiceInfo">
-                    <h3>Voice Connected</h3>
-                    <p>Stream</p>
-                </div>
-
-                <div className="sidebar-reset__voiceIcons">
-                    <InfoOutlinedIcon />
-                    <CallIcon />
+                    <h3>Status: Online</h3>
                 </div>
             </div>
             <div className="sidebar-reset__profile">
-            <Avatar src={''} onClick={() => auth.signOut()} />
+            <Avatar src={user.photo} onClick={() => auth.signOut()} />
                 <div className="sidebar-reset__profileInfo">
                     <h3>{user.displayName}</h3>
                     <p>#{user.uid.substring(0, 5)}</p>
-                </div>
-
-                <div className="sidebar-reset__profileIcons">
-                    <MicIcon />
-                    <HeadsetIcon />
-                    <SettingsIcon />
                 </div>
             </div>
         </div>

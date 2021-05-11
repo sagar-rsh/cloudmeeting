@@ -1,14 +1,13 @@
 .sidebarChannel-reset:hover > h4 {
   color: rgb(0, 0, 0);
-  background-color: #ffffff;
+  background-color: #ffffff1e;
 }
 
 .sidebarChannel-reset > h4 {
   display: flex;
   padding-left: 15px;
   align-items: center;
-  background-color: #ffffff;
-  color: gray;
+  color: black;
   cursor: pointer;
 }
 
