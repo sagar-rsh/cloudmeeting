@@ -9,7 +9,7 @@ const Login = () => {
     }
     return (
         <div className="login-body">
-        <img src="https://s3.amazonaws.com/discors-dev/Login/background.jpg" alt="" className="background-image"></img>
+        <img src="http://bit.ly/2gPLxZ4" alt="" className="background-image"></img>
         {/* <img src="https://s3.amazonaws.com/discors-dev/Login/discors.svg" alt="" className="login-logo"></img> */}
         <form className="login-form" >
           <div className="login-form-inner">
